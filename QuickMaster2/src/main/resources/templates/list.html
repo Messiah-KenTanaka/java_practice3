@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<title>速習SpringBoot</title>
+<style>
+.high  {
+     background-color: #FFC0CB
+}
+
+.low {
+    background-color: #7FFFD4
+} 
+</style>
+</head>
+<body>
+
+	<!-- headerフラグメンtを引用 -->
+	<div th:insert="~{common/header_footer::header}"></div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ISBNコード</th><th>書名</th><th>価格</th><th>出版社</th><th>刊行日</th>
+			</tr>
+		</thead>
+		<tbody th:each="book : ${books}">
+			<tr>
+				<td th:text="${book.id}"></td>
+				<td th:text="${book.isbn}"></td>
+				<td th:text="${book.title}"></td>
+				<td th:class="${book.price ge 3000} ? 'high' : 'low'">
+					[[${#numbers.formatInteger(book.price, 3, 'COMMA')}]]円
+				</td>
+				<td th:text="${book.publisher}"></td>
+				<td>[[${#temporals.format(book.published, 'yyyy年MM月dd日')}]]</td>
+				<td th:switch="${book.attach}">
+					<span th:case="cd">
+						<img th:src="@{/image/cd.png}" th:alt-title="${book.attach}">
+					</span>
+					<span th:case="dvd">
+						<img th:src="@{/image/dvd.png}" th:alt-title="${book.attach}">
+					</span>
+					<span th:case="dl">
+						<img th:src="@{/image/dl.png}" th:alt-title="${book.attach}">
+					</span>
+					<span th:case="*">
+						-
+					</span>
+				</td>		
+			</tr>
+		</tbody>
+	</table>
+	
+		<!-- headerフラグメンtを引用 -->
+	<div th:insert="~{common/header_footer::footer}"></div>
+	
+
+</body>
+</html>
