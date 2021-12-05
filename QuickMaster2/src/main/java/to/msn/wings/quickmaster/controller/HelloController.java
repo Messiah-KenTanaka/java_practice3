@@ -1,4 +1,4 @@
-package to.msn.wings.quickmaster;
+package to.msn.wings.quickmaster.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
