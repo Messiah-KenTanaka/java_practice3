@@ -75,4 +75,18 @@ public class RecordController {
 		model.addAttribute("main", "record/paging::main");
 		return "common/layout";
 	}
+
+	@GetMapping("/findbyprice")
+	public String findbyprice(Model model) {
+		model.addAttribute("books", rep.findByPrice(3000));
+		model.addAttribute("main", "record/list::main");
+		return "common/layout";
+	}
+
+	@GetMapping("/group")
+	public String group(Model model) {
+		model.addAttribute("books", rep.groupByPublisher());
+		model.addAttribute("main", "record/glist::main");
+		return "common/layout";
+	}
 }
