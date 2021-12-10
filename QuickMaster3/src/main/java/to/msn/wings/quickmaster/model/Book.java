@@ -1,12 +1,17 @@
 package to.msn.wings.quickmaster.model;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,9 +37,13 @@ public class Book {
 	@Column(name = "publisher", nullable = false)
 	private String publisher;
 	// 刊行日
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "published", nullable = false)
 	private LocalDate published;
 	// 付属品
 	@Column(name = "attach", nullable = true)
 	private String attach;
+
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	private Collection<Review> reviews;
 }

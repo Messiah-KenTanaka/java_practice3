@@ -19,20 +19,8 @@ INSERT INTO book(id, isbn, title, price, publisher, published, attach)
 INSERT INTO book(id, isbn, title, price, publisher, published, attach)
   VALUES(10, '978-4-7981-5112-0', '独習Java 新版' , 2980, '翔泳社', '2019-05-15', 'dl');
 
-/*
-INSERT INTO book(id, isbn, title, price, publisher, published, attach)
-  VALUES(10, '978-4-7981-5112-0', NULL , 2980, '翔泳社', '2019-05-15', 'dl');
-*/
-/*
-INSERT INTO app_user(id, username, password, enabled)
-  VALUES(1, 'yamada', '$2a$10$/Q4O4F7ELhz2V5ZpeodUh.UbUyrvUkSRe8m/JzDVjqJQPuYODU2OO', 1);
-INSERT INTO app_user(id, username, password, enabled)
-  VALUES(2, 'suzuki', '$2a$10$/Q4O4F7ELhz2V5ZpeodUh.UbUyrvUkSRe8m/JzDVjqJQPuYODU2OO', 1);
-INSERT INTO app_user(id, username, password, enabled)
-  VALUES(3, 'tanaka', '$2a$10$/Q4O4F7ELhz2V5ZpeodUh.UbUyrvUkSRe8m/JzDVjqJQPuYODU2OO', 1);
-  
+
 INSERT INTO review(id, name, body, book_id) VALUES(1, '山田太郎', '丁寧な説明で分かりやすい。', 1);
 INSERT INTO review(id, name, body, book_id) VALUES(2, '鈴木次郎', '初めての人におすすめの入門書だった。', 1);
 INSERT INTO review(id, name, body, book_id) VALUES(3, '田中三郎', 'まさに、独学するのにうってつけだと思う。', 1);
 INSERT INTO review(id, name, body, book_id) VALUES(4, '山田太郎', 'コンパクトにまとまっていて良い。', 2);
-*/

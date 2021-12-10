@@ -89,4 +89,11 @@ public class RecordController {
 		model.addAttribute("main", "record/glist::main");
 		return "common/layout";
 	}
+
+	@GetMapping("rel")
+	public String rel(Model model) {
+		model.addAttribute("book", rep.findById(1).get());
+		model.addAttribute("main", "record/rel::main");
+		return "common/layout";
+	}
 }
