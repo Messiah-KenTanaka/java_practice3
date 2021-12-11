@@ -2,6 +2,8 @@ package to.msn.wings.quickmaster.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,7 +32,12 @@ public class CrudController {
 	}
 
 	@PostMapping("/save")
-	public String save(@ModelAttribute Book book, RedirectAttributes attrs) {
+	public String save(@Validated @ModelAttribute Book book, BindingResult result, Model model,
+			RedirectAttributes attrs) {
+		if (result.hasErrors()) {
+			model.addAttribute("main", "crud/create::main");
+			return "common/layout";
+		}
 		rep.save(book);
 		// フラッシュメッセージを追加
 		attrs.addFlashAttribute("success", "データの登録に成功しました。");
