@@ -2,6 +2,7 @@ package to.msn.wings.quickmaster.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -49,6 +50,21 @@ public class CrudController {
 		book.setId(id);
 		rep.save(book);
 		attrs.addFlashAttribute("success", "データの更新に成功しました。");
+		return "redirect:/list";
+	}
+
+	@GetMapping("/show/{id}")
+	public String show(@PathVariable int id, Model model) {
+		Book b = rep.findById(id).get();
+		model.addAttribute("book", b);
+		model.addAttribute("main", "crud/show::main");
+		return "common/layout";
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public String delete(@PathVariable int id, RedirectAttributes attrs) {
+		rep.deleteById(id);
+		attrs.addFlashAttribute("success", "データの削除に成功しました。");
 		return "redirect:/list";
 	}
 }
